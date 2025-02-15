@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg mx-auto p-4" style="max-width: 400px;">
+    <div class="card-header bg-success text-white text-center">📝 Registro</div>
+    <div class="card-body">
+        <form action="{{ url_for('auth.signup') }}" method="POST">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Ingresa tu correo" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Registrarse</button>
+        </form>
+    </div>
+    <div class="card-footer text-center">
+        <p class="mb-0">¿Ya tienes una cuenta? <a href="{{ url_for('auth.login') }}">Inicia sesión</a></p>
+    </div>
+</div>
+{% endblock %}
+

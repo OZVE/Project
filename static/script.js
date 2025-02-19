@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Documento cargado correctamente");
 
+    fetch("/session-check")
+        .then(response => response.json())
+        .then(data => {
+            if (!data.authenticated){
+                window.location.href = "/login";
+            }
+        })
+        .catch(error => console.error("Error: No se pudo verificar la sesión.", error));
+
     if (typeof io === "undefined") {
         console.error("❌ ERROR: socket.io no está definido.");
         return;

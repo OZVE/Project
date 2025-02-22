@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Chat - {{ conversation.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <!-- Sidebar (opcional) para navegación de conversaciones -->
+  <div class="col-md-3">
+    <a href="{{ url_for('lista_conversaciones') }}" class="btn btn-primary mb-3">Volver a Conversaciones</a>
+    <!-- Aquí puedes listar otras conversaciones o acciones -->
+  </div>
+  <!-- Área de Chat -->
+  <div class="col-md-9">
+    <h3>{{ conversation.title }}</h3>
+    <div class="card">
+      <div class="card-body chat-box" id="chat-box" data-conversation-id="{{ conversation.id }}" style="height: 300px; overflow-y: auto;">
+        {% for msg in messages %}
+          <div class="alert {{ 'alert-primary' if msg.sender == 'user' else 'alert-secondary' }} {{ 'text-end' if msg.sender == 'user' else 'text-start' }}">
+            <strong>{{ msg.sender|capitalize }}:</strong> {{ msg.message }}
+            <small class="text-muted">{{ msg.timestamp.strftime('%d/%m/%Y %H:%M') }}</small>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="card-footer d-flex">
+        <input type="text" id="userInput" class="form-control me-2" placeholder="Escribe un mensaje...">
+        <button id="sendBtn" class="btn btn-primary">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

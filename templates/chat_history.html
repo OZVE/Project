@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}Historial de Chat{% endblock %}
+
+{% block content %}
+  <h2>Historial de Chat</h2>
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert {{ 'alert-primary' if msg.sender == 'user' else 'alert-secondary' }}">
+          <strong>{{ msg.sender|capitalize }}:</strong> {{ msg.message }}
+          <small class="text-muted">{{ msg.timestamp.strftime('%d/%m/%Y %H:%M') }}</small>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No hay mensajes guardados.</p>
+  {% endif %}
+{% endblock %}

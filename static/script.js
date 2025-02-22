@@ -37,14 +37,17 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-
+var currentConversationId = document.getElementById("chat-box").dataset.conversationId; // O lo defines manualmente
     function sendMessage() {
         var message = userInput.value.trim();
         if (message === "") return;
 
         console.log("📨 Enviando mensaje:", message);
         addMessage("user", message);
-        socket.emit("user_message", { message: message });
+
+        socket.emit("user_message", { 
+            message: message,
+            conversation_id: currentConversationId });
         userInput.value = "";
     }
 
@@ -57,8 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     socket.on("chat_update", function (data) {
-        console.log("📩 Mensaje recibido:", data.message);
-        addMessage(data.sender, data.message);
+        if (data.conversation_id !== currentConversationId) return;
+        data.messages.forEach(msg => {
+            console.log("📩 Mensaje recibido:", msg.message);
+            addMessage(msg.sender, msg.message);
+        });
     });
 
     console.log("✅ Eventos de chat inicializados correctamente.");

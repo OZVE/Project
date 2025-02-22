@@ -43,8 +43,6 @@ def login():
             return redirect(url_for('index'))  # 🔥 Asegúrate de que 'index' es el nombre de la función en app.py
         
         flash("Correo o contraseña incorrectos", "error")
-        return redirect(url_for('auth.login'))  # 🔥 Esto estaba mal en tu código
-
 
     return render_template('login.html')
 

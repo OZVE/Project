@@ -8,6 +8,8 @@ import os
 import re
 from dotenv import load_dotenv
 
+from static.utils import login_required
+
 # Cargar variables de entorno
 load_dotenv()
 
@@ -30,19 +32,11 @@ if not api_key:
 
 client = openai.Client(api_key=api_key)
 
-def login_required(f):
-    """ Decorador para verificar si el usuario esta autenticado """
-    def wrapper(*args, **kwargs):
-        if 'user_id' not in session:
-            return redirect(url_for('auth.login'))
-        return f(*args, **kwargs)
-    return wrapper
-
 @app.route('/session-check')
 def session_check():
     return jsonify({"authenticated": "user_id" in session})
 
-@app.route('/')
+@app.route('/', endpoint='index')
 @login_required
 def index():
     return render_template('index.html', user=session.get('user_name'))

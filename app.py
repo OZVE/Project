@@ -59,14 +59,6 @@ def chat(conversation_id):
     messages = conv.messages  # O una consulta ordenada
     return render_template('chat.html', conversation=conv, messages=messages)
 
-@app.route('/conversations')
-@login_required
-def conversations():
-    from models.conversation import Conversation
-    convs = Conversation.query.filter_by(user_id=session.get('user_id')).order_by(Conversation.created_at.desc()).all()
-    return render_template('conversations.html', conversations=convs)
-
-
 @app.route('/', endpoint='index')
 @login_required
 def index():

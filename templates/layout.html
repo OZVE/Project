@@ -19,7 +19,7 @@
                 <ul class="navbar-nav ms-auto">
                     {% if session.get('user_id') %}
                         <li class="nav-item"><a class="nav-link" href="#">Bienvenido, {{ session.get('user_name', 'Usuario') }}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('conversations') }}">Historial</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('lista_conversaciones') }}">Historial</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar Sesión</a></li>
                         <li class="nav-item"><a href="{{ url_for('new_conversation') }}" class="btn btn-success">Nuevo Chat</a></li>
 

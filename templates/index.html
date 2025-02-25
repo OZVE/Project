@@ -3,13 +3,15 @@
 {% block title %}Chat IA - Gestión de Proyectos{% endblock %}
 
 {% block content %}
-    <div class="card shadow-lg mx-auto p-3" style="max-width: 600px;">
-        <div class="card-header bg-primary text-white text-center">💬 Chat Inteligente</div>
-        <div class="card-body chat-box" id="chat-box" style="height: 300px; overflow-y: auto;"></div>
-        <div class="card-footer d-flex">
-            <input type="text" id="userInput" class="form-control me-2" placeholder="Escribe un mensaje...">
-            <button id="sendBtn" class="btn btn-primary">➤</button>
+<div class="card shadow-lg mx-auto p-3" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white text-center">💬 Chat Inteligente</div>
+    <div class="card-body">
+        <p class="text-center mb-4">Bienvenido a tu asistente de gestión de proyectos</p>
+        <div class="d-grid gap-2">
+            <a href="{{ url_for('new_conversation') }}" class="btn btn-success btn-lg">Iniciar Nueva Conversación</a>
+            <a href="{{ url_for('lista_conversaciones') }}" class="btn btn-outline-primary">Ver Conversaciones Anteriores</a>
         </div>
     </div>
+</div>
 {% endblock %}
 

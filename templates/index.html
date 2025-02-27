@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="card shadow-lg mx-auto p-3" style="max-width: 600px;">
-    <div class="card-header bg-primary text-white text-center">💬 Chat Inteligente</div>
+    <div class="card-header bg-dark text-white text-center">💬 Oz AI</div>
     <div class="card-body">
-        <p class="text-center mb-4">Bienvenido a tu asistente de gestión de proyectos</p>
+        <p class="text-center mb-4">Welcome to your project management assistant</p>
         <div class="d-grid gap-2">
-            <a href="{{ url_for('new_conversation') }}" class="btn btn-success btn-lg">Iniciar Nueva Conversación</a>
-            <a href="{{ url_for('lista_conversaciones') }}" class="btn btn-outline-primary">Ver Conversaciones Anteriores</a>
+            <a href="{{ url_for('new_conversation') }}" class="btn btn-outline-success">New Project</a>
+            <a href="{{ url_for('lista_conversaciones') }}" class="btn btn-outline-primary">History</a>
         </div>
     </div>
 </div>

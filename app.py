@@ -45,7 +45,7 @@ def conversations():
 def new_conversation():
     from models.conversation import Conversation
     # Crear una nueva conversación con título por defecto
-    conv = Conversation(user_id=session.get('user_id'), title="Nueva Conversación")
+    conv = Conversation(user_id=session.get('user_id'), title="New Chat")
     db.session.add(conv)
     db.session.commit()
     return redirect(url_for('chat', conversation_id=conv.id))

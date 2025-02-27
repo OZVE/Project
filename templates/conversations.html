@@ -3,8 +3,10 @@
 {% block title %}Conversaciones{% endblock %}
 
 {% block content %}
-  <h2>Mis Conversaciones</h2>
-  <a href="{{ url_for('new_conversation') }}" class="btn btn-success mb-3">Nuevo Chat</a>
+  <h2>My chats </h2>
+  <div class="card col-md-12">
+    <a href="{{ url_for('new_conversation') }}" class="btn btn-outline-success">New Chat</a>
+  </div>
   <ul class="list-group">
     {% for conv in conversations %}
       <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -12,7 +14,7 @@
         <span class="badge bg-secondary">{{ conv.created_at.strftime('%d/%m/%Y') }}</span>
       </li>
     {% else %}
-      <li class="list-group-item">No tienes conversaciones.</li>
+      <li class="list-group-item">You dont have chats.</li>
     {% endfor %}
   </ul>
 {% endblock %}
